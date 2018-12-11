@@ -13,11 +13,15 @@ def get_input(text, valid_value=[]):
             print("pls enter valid option")
 
 def get_clean_url(url):
+    # print(url)
     o = urlparse(url)
-    clean = o.scheme + "://" + o.netloc + o.path
+    # print(o.scheme, o.netloc, o.path)
+    # clean = o.scheme + "://" + o.netloc + o.path
+    clean = o.path
     if o.path=="/profile.php":
         id = o.query.split('&')[0]
         clean += '?'+id
+    print(clean)
     return clean
 
 def scrollBottom(driver, val=0, mode="INFINITE", pause_time=0.5):
