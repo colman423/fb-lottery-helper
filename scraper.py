@@ -55,9 +55,11 @@ class Scraper:
                     if comment[1] == like[1]:
                         legal_list_new.append(comment)
                         legal_like_list.remove(like)
+                        break
 
             legal_list = legal_list_new
 
+        self.driver.quit()
         print(len(legal_list))
         print(legal_list)
         return legal_list
@@ -69,7 +71,7 @@ class Scraper:
         tags_need = self.COMMENT_RULES['TAGS']
         text_need = self.COMMENT_RULES['TEXT']
         comment_wrapper = comment_like_share_wrapper.find_element_by_css_selector('._3w53')
-        print(comment_wrapper)
+        # print(comment_wrapper)
 
         while True:
             if pq(comment_wrapper.get_attribute('innerHTML'))('._4sxd'):
@@ -91,6 +93,7 @@ class Scraper:
         for com in comments.items():
             comment_content = com('._3l3x')
             if is_legal_comment_content(comment_content, tag=tags_need, text=text_need):
+                print(comment_content.text(), "LEGAL!!!")
                 comment_text = comment_content.text()
                 actor_ele = com('._6qw4')
                 actor_url = get_clean_url(actor_ele.attr('href'))
@@ -126,6 +129,7 @@ class Scraper:
             legal_motion_list.append((actor_name, actor_url))
         
         print(f"total {len(legal_motion_list)} likes")
+        print(legal_motion_list)
         return legal_motion_list
 
 
