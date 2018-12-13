@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css">
     <script src="static/jquery.min.js"></script>
     <script src="static/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
 </head>
 
 <body class="container py-3">
@@ -70,8 +71,11 @@
                         <div class="ml-3" id="options-google" style="display: none">
                             <div class="form-group">
                                 <label for="input-googlelink">google試算表連結</label>
-                                <input type="text" class="form-control" id="input-googlelink" aria-describedby="input-help-googlelink" placeholder="">
-                                <small id="input-help-googlelink" class="form-text text-muted">範例: https://www.facebook.com/groups/NCCUSTUDENT/permalink/123456789/</small>    
+                                <div class="form-row">
+                                    <input type="text" class="form-control col-11" id="input-googlelink" aria-describedby="input-help-googlelink" placeholder="">
+                                    <button id="group-google-get" class="col-1 btn btn-link" type="button"><i class="fas fa-cloud-download-alt h4 my-auto"></i></button>
+                                </div>
+                                <small id="input-help-googlelink" class="form-text text-muted">範例: https://docs.google.com/spreadsheets/d/1cInDMhG2fRZxVCBWC1UDrYxUsf6hGniKjvx6Yg90Y8U/edit#gid=326226540</small>    
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-6">
@@ -271,6 +275,91 @@
             } 
         })
     })
+</script>
+<script>
+    $('#group-google-get').click(function(e) {
+        handleClientLoad(e);
+    });
+
+    var CLIENT_ID = '8372100595-q7sv932tbof1ome2td9ktt0q4c02hvjd.apps.googleusercontent.com';
+    var API_KEY = 'AIzaSyAD4qydu6OTwsstN7LhbHCnJjcvF2Fjovs';
+    var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+    var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+
+    /**
+    *  On load, called to load the auth2 library and API client library.
+    */
+
+    function handleClientLoad(e) {
+        gapi.load('client:auth2', function() {
+            gapi.client.init({
+                apiKey: API_KEY,
+                clientId: CLIENT_ID,
+                discoveryDocs: DISCOVERY_DOCS,
+                scope: SCOPES
+            }).then(function () {
+                // Listen for sign-in state changes.
+                gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+                
+                // Handle the initial sign-in state.
+                updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            }, function(error) {
+                alert(JSON.stringify(error.error.message));
+            });
+        });
+    }
+    
+    /**
+    *  Called when the signed in status changes, to update the UI
+    *  appropriately. After a sign-in, the API is called.
+    */
+    function updateSigninStatus(isSignedIn) {
+        if (isSignedIn) {
+            getSheets();
+        } 
+        else {
+            gapi.auth2.getAuthInstance().signIn().catch( function(err) {
+                var msg = err.error;
+                console.log(msg);
+                if( msg=="popup_closed_by_user" ) {
+                    alert("關屁關，趕快登入")
+                }
+                else if( msg=="popup_blocked_by_browser") {
+                    alert("請允許彈出式視窗歐，不會有垃圾廣告的您放心")
+                }
+            });
+        }
+    }
+    
+    /**
+    * Print the names and majors of students in a sample spreadsheet:
+    * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+    */
+    function getSheets() {
+
+        var link = $('#input-googlelink').val();
+        console.log(link)
+        gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: getSheetId(link),
+            range: '表單回應 1',
+        }).then(function(response) {
+            console.log(response.result.values);
+            var range = response.result;
+            
+        }, function(response) {
+            alert('Error: ' + response.result.error.message);
+        });
+    }
+
+    function getSheetId(url) {
+        start = url.indexOf("spreadsheets/d/");
+        path = url.substring(start+15);
+        end = path.indexOf("/");
+        id = path.substring(0, end)
+        console.log(id);
+        return id;
+    }
+    
 </script>
 
 </html>
