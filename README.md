@@ -12,6 +12,7 @@ This tools can help you make lottery in groups' post easily.
     $ pip install -r requirement.txt
     ```
     Mac users may also need to add `sudo` at front.
+    
          ```
         $ sudo pip3 install -r requirement.txt
         ```   
