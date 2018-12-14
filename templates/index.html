@@ -66,13 +66,18 @@
                             <label class="custom-control-label" for="check-google">連接google表單</label>
                         </div>
                         <div class="ml-3" id="options-google" style="display: none">
-                            <div class="form-group">
-                                <label for="input-googlelink">google試算表連結</label>
-                                <div class="form-row">
-                                    <input type="text" class="form-control col-11" id="input-googlelink" aria-describedby="input-help-googlelink" placeholder="">
-                                    <button id="group-google-get" class="col-1 btn btn-link" type="button"><i class="fas fa-cloud-download-alt h4 my-auto"></i></button>
+                            <div class="form-row">
+                                <div class="form-group col-8">
+                                    <label for="input-googlelink">google試算表連結</label>
+                                    <input type="text" class="form-control" id="input-googlelink" aria-describedby="input-help-googlelink" placeholder="">
+                                    <small id="input-help-googlelink" class="form-text text-muted">範例: https://docs.google.com/spreadsheets/d/23reugfjertyhtrsfdgh7yt4r/edit#gid=326226540</small>                                      
                                 </div>
-                                <small id="input-help-googlelink" class="form-text text-muted">範例: https://docs.google.com/spreadsheets/d/1cInDMhG2fRZxVCBWC1UDrYxUsf6hGniKjvx6Yg90Y8U/edit#gid=326226540</small>    
+                                <div class="form-group col-3">
+                                    <label for="input-googletable">工作表名稱</label>
+                                    <input type="text" class="form-control" id="input-googletable" aria-describedby="input-help-googletable" placeholder="">
+                                    <small id="input-help-googletable" class="form-text text-muted">範例: 表單回應 1</small>              
+                                </div>
+                                <button id="group-google-get" class="col-1 btn btn-link" type="button"><i class="fas fa-cloud-download-alt h4 my-auto"></i></button>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-6">

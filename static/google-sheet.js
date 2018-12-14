@@ -58,15 +58,23 @@ function updateSigninStatus(isSignedIn) {
 */
 function getSheets() {
 
-    var link = $('#input-googlelink').val();
-    var table = $('#input-googletable').val();
+    var link = $('#input-googlelink').val() || "https://docs.google.com/spreadsheets/d/1cInDMhG2fRZxVCBWC1UDrYxUsf6hGniKjvx6Yg90Y8U/";
+    var table = $('#input-googletable').val() || "表單回應 1";
     console.log(link, table)
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: getSheetId(link),
         range: table,
     }).then(function(response) {
-        console.log(response.result.values);
-        var range = response.result;
+        alert("爬取完畢，請選擇對應欄位");
+        var rows = response.result.values;
+        var title = rows[0];
+        var answers = rows.slice(1)
+        console.log(answers)
+        ele = "";
+        for( var i=0; i<title.length; i++ ) {
+            ele += '<option>'+title[i]+'</option>'
+        }
+        $('#select-colname').html(ele);
         
     }, function(res) {
         console.log(res);
