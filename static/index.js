@@ -8,27 +8,27 @@ $('#form-grouptab').submit( function(e) {
     $('#submit-grouptab').addClass('disabled').text("爬取中，請至webdriver操作");
     
     var data  = {
-        post_link: $('#group-tab #input-postlink').val(),
-        need_like: $('#group-tab #check-like').prop('checked'),
-        need_comment: $('#group-tab #check-comment').prop('checked'),
-        need_csv: $('#group-tab #check-google').prop('checked'),
+        post_link: $('#input-postlink').val(),
+        need_like: $('#check-like').prop('checked'),
+        need_comment: $('#check-comment').prop('checked'),
+        need_csv: $('#check-google').prop('checked'),
     }
     if( data.need_comment ) {
         data.comment_options = {
-            text: $('#group-tab #input-commenttext').val(),
-            tag: $('#group-tab #input-tagcount').val()
+            text: $('#input-commenttext').val(),
+            tag: $('#input-tagcount').val()
         }
     }
     if( data.need_csv ) {
         data.csv_options = {
             data: getSheetColData(),
-            type: $('#group-tab #select-colusage').val()
+            type: $('#select-colusage').val()
         }
     }
 
     console.log(data)
     $.ajax({
-        url: '/scrapy/group',
+        url: '/scrapy',
         method: 'POST',
         contentType: "application/json",
         data: JSON.stringify(data),
