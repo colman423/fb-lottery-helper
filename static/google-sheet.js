@@ -1,3 +1,5 @@
+gAnswers = []
+
 $('#group-google-get').click(function(e) {
     handleClientLoad(e);
 });
@@ -68,11 +70,10 @@ function getSheets() {
         alert("爬取完畢，請選擇對應欄位");
         var rows = response.result.values;
         var title = rows[0];
-        var answers = rows.slice(1)
-        console.log(answers)
-        ele = "";
+        gAnswers = rows.slice(1);                 
+        ele = "<option selected disabled>---請選擇---</option>";
         for( var i=0; i<title.length; i++ ) {
-            ele += '<option>'+title[i]+'</option>'
+            ele += '<option value="'+i+'">'+title[i]+'</option>'
         }
         $('#select-colname').html(ele);
         
@@ -100,4 +101,12 @@ function getSheetId(url) {
     id = path.substring(0, end)
     console.log(id);
     return id;
+}
+
+function getSheetColData() {
+    var i = $('#select-colname').val();
+    var colData = gAnswers.map( function(d) {
+        return d[i]
+    });
+    return colData;
 }

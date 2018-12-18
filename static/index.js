@@ -21,11 +21,11 @@ $('#form-grouptab').submit( function(e) {
     }
     if( data.need_csv ) {
         data.csv_options = {
-            url: $('#group-tab #input-googlelink').val(),
-            col: $('#group-tab #select-colusage').val(),
-            key: $('#group-tab select-colusage').val()
+            data: getSheetColData(),
+            type: $('#group-tab #select-colusage').val()
         }
     }
+
     console.log(data)
     $.ajax({
         url: '/scrapy/group',
@@ -99,5 +99,5 @@ $('#lottery-btn').click( function() {
 
 $(document).ready( function() {
     $('#btn-add-lottery').click()
-    $('#check-google').trigger('change')
+    // $('#check-google').trigger('change')
 });

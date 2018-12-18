@@ -1,7 +1,4 @@
-# URL_POST = "https://www.facebook.com/groups/NCCUSTUDENT/permalink/2057386644307431/"
 URL_HOME = "http://www.facebook.com"
-# COMMENT_RULES = {'TAGS': 0, 'TEXT': ""}
-# LIKE_NEED = True
 DRIVER_PATH = '/Applications/chromedriver'
 
 
@@ -36,7 +33,13 @@ class Scraper:
         self.driver.implicitly_wait(500)
         self.driver.get(URL_HOME)
         cookie_helper.load(self.driver)
-        self.driver.get(self.URL_POST)
+        try:
+            self.driver.get(self.URL_POST)
+        except WebDriverException as e:
+            error_msg = e.msg
+            if "Cannot navigate to invalid URL" in error_msg:
+                raise Exception("INVALID_FACEBOOK_URL")
+            # print(e.keys())
 
         posts = self.driver.find_element_by_css_selector('#content_container #pagelet_group_mall')
         post = posts.find_element_by_css_selector('._4-u2._4-u8')
