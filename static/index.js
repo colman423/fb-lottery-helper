@@ -44,13 +44,15 @@ $('#form-grouptab').submit( function(e) {
             }
             $('#legal-list-content').html(ele);
             $('#legal-count').text(data.length);
-            
-            setTimeout(function() {
-                $('#submit-grouptab').text("開始爬取抽獎名單").removeClass('disabled');
-            }, 2000)
+
         },
         error: function(a, b, c) {
             console.log(a, b, c)
+        },
+        complete: function() {    
+            setTimeout(function() {
+                $('#submit-grouptab').text("開始爬取抽獎名單").removeClass('disabled');
+            }, 1000)
         }
     })
 })

@@ -1,12 +1,11 @@
-URL_HOME = "http://www.facebook.com"
-DRIVER_PATH = '/Applications/chromedriver'
-
-
 import cookie_helper
 from helper import *
 from pyquery import PyQuery as pq
 from selenium import webdriver
 from selenium.common.exceptions import *
+
+URL_HOME = "http://www.facebook.com"
+DRIVER_PATH = '/Applications/chromedriver'
 
 class Scraper:
     def __init__(self, url_post, comment_rules, like_need):
