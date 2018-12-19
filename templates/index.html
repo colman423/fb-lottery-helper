@@ -13,94 +13,91 @@
 </head>
 <body class="container py-3">
     <div class="card">
-        <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="group-tab-btn" data-toggle="tab" href="#group-tab" role="tab" aria-controls="home" aria-selected="true">社團問卷抽獎</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="fans-tab-btn" data-toggle="tab" href="#fans-tab" role="tab" aria-controls="profile" aria-selected="false">粉絲團抽獎</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="manual-tab-btn" data-toggle="tab" href="#manual-tab" role="tab" aria-controls="contact" aria-selected="false">手動輸入抽獎名單</a>
-                </li>
-            </ul>
-        </div>
+        <div class="card-header">使用說明</div>
         <div class="card-body">
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="group-tab" role="tabpanel" aria-labelledby="group-tab-btn">
-                    <form id="form-grouptab">
-                        <div class="form-group">
-                            <label for="input-postlink">貼文連結</label>
-                            <input type="text" class="form-control" id="input-postlink" placeholder="" required>
-                            <small id="input-help-postlink" class="form-text text-muted">範例: https://www.facebook.com/groups/NCCUSTUDENT/permalink/123456789/</small>
-                        </div>
+                臣亮言：先帝創業未半，而中道崩殂。今天下三分，益州
+                疲弊，此誠危急存亡之秋也。然侍衛之臣，不懈於內；忠志之
+                士，忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。誠宜開
+                張聖聽，以光先帝遺德，恢弘志士之氣；不宜妄自菲薄，引喻
+                失義，以塞忠諫之路也。宮中府中，俱為一體，陟罰臧否，不
+                宜異同。若有作姦犯科，及為忠善者，宜付有司，論其刑賞，
+                以昭陛下平明之治，不宜篇私，使內外異法也。
+        </div>
+        
+    </div>
 
-                        <div class="form-group custom-checkbox form-check">
-                            <input class="custom-control-input" type="checkbox" value="" id="check-like">
-                            <label class="custom-control-label" for="check-like">需按讚</label>
-                        </div>
-          
-                        <div class="form-group custom-checkbox form-check">
-                            <input class="custom-control-input" type="checkbox" value="" id="check-comment">
-                            <label class="custom-control-label" for="check-comment">需留言</label>
-                        </div>
-                        <div class="ml-3 form-row">
-                            <div class="col-md-8 col-12 form-group form-row">
-                                <label for="input-commenttext" class="col-form-label">留言需包含文字</label>
-                                <div class="align-self-center" style="flex-grow: 0.9;">
-                                    <input type="text" class="form-control" id="input-commenttext" placeholder="ex: Done(大小寫視為相同)">
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-12 form-group form-row">
-                                <label for="input-tagcount" class="col-form-label">需tag至少</label>
-                                <div class="align-self-center" style="flex-grow: 0.9; flex-basis: 10%;">
-                                    <input type="number" class="form-control" id="input-tagcount" min="0" value="0">
-                                </div>
-                                <span class="col-form-label">人</span>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group custom-checkbox form-check">
-                            <input class="custom-control-input" type="checkbox" value="" id="check-google">
-                            <label class="custom-control-label" for="check-google">連接google表單</label>
-                        </div>
-                        <div class="ml-3" id="options-google" style="display: none">
-                            <div class="form-row">
-                                <div class="form-group col-8">
-                                    <label for="input-googlelink">google試算表連結</label>
-                                    <input type="text" class="form-control" id="input-googlelink" aria-describedby="input-help-googlelink" placeholder="">
-                                    <small id="input-help-googlelink" class="form-text text-muted">範例: https://docs.google.com/spreadsheets/d/23reugfjertyhtrsfdgh7yt4r/edit#gid=326226540</small>                                      
-                                </div>
-                                <div class="form-group col-3">
-                                    <label for="input-googletable">工作表名稱</label>
-                                    <input type="text" class="form-control" id="input-googletable" aria-describedby="input-help-googletable" placeholder="">
-                                    <small id="input-help-googletable" class="form-text text-muted">範例: 表單回應 1</small>              
-                                </div>
-                                <button id="group-google-get" class="col-1 btn btn-link" type="button"><i class="fas fa-cloud-download-alt h4 my-auto"></i></button>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-6">
-                                    <label for="select-colname">選擇要抽的欄位：</label>
-                                    <select id="select-colname" class="form-control">
-                                        <option selected disabled>---請選擇---</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-6">
-                                    <label for="select-colusage">欄位種類</label>
-                                    <select id="select-colusage" class="form-control">
-                                        <option selected value="name">人名   ex: Tom Radol</option>
-                                        <option value="url">個人頁網址  ex: www.facebook.com/tom.radol.1987</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>                       
-                        <button type="submit" class="btn btn-primary mt-3" id="submit-grouptab">開始爬取抽獎名單</button>
-                    </form>
+    <div class="card mt-3">
+        <div class="card-header">爬取貼文設定</div>
+
+        <div class="card-body">
+            <form id="form-grouptab">
+                <div class="form-group">
+                    <label for="input-postlink">貼文連結</label>
+                    <input type="text" class="form-control" id="input-postlink" placeholder="" required>
+                    <small id="input-help-postlink" class="form-text text-muted">範例: https://www.facebook.com/groups/NCCUSTUDENT/permalink/123456789/</small>
                 </div>
-                <div class="tab-pane fade" id="fans-tab" role="tabpanel" aria-labelledby="fans-tab-btn">...</div>
-                <div class="tab-pane fade" id="manual-tab" role="tabpanel" aria-labelledby="manual-tab-btn">...</div>
-            </div>
+                
+                <div class="form-group custom-checkbox form-check">
+                    <input class="custom-control-input" type="checkbox" value="" id="check-like">
+                    <label class="custom-control-label" for="check-like">需按讚</label>
+                </div>
+                
+                <div class="form-group custom-checkbox form-check">
+                    <input class="custom-control-input" type="checkbox" value="" id="check-comment">
+                    <label class="custom-control-label" for="check-comment">需留言</label>
+                </div>
+                <div class="ml-3 form-row">
+                    <div class="col-md-8 col-12 form-group form-row">
+                        <label for="input-commenttext" class="col-form-label">留言需包含文字</label>
+                        <div class="align-self-center" style="flex-grow: 0.9;">
+                            <input type="text" class="form-control" id="input-commenttext" placeholder="ex: Done(大小寫視為相同)">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 form-group form-row">
+                        <label for="input-tagcount" class="col-form-label">需tag至少</label>
+                        <div class="align-self-center" style="flex-grow: 0.9; flex-basis: 10%;">
+                            <input type="number" class="form-control" id="input-tagcount" min="0" value="0">
+                        </div>
+                        <span class="col-form-label">人</span>
+                    </div>
+                </div>
+                
+                <div class="form-group custom-checkbox form-check">
+                    <input class="custom-control-input" type="checkbox" value="" id="check-google">
+                    <label class="custom-control-label" for="check-google">連接google表單</label>
+                </div>
+                <div class="ml-3" id="options-google" style="display: none">
+                    <div class="form-row">
+                        <div class="form-group col-8">
+                            <label for="input-googlelink">google試算表連結</label>
+                            <input type="text" class="form-control" id="input-googlelink" aria-describedby="input-help-googlelink" placeholder="">
+                            <small id="input-help-googlelink" class="form-text text-muted">範例: https://docs.google.com/spreadsheets/d/23reugfjertyhtrsfdgh7yt4r/edit#gid=326226540</small>                                      
+                        </div>
+                        <div class="form-group col-3">
+                            <label for="input-googletable">工作表名稱</label>
+                            <input type="text" class="form-control" id="input-googletable" aria-describedby="input-help-googletable" placeholder="">
+                            <small id="input-help-googletable" class="form-text text-muted">範例: 表單回應 1</small>              
+                        </div>
+                        <button id="group-google-get" class="col-1 btn btn-link" type="button"><i class="fas fa-cloud-download-alt h4 my-auto"></i></button>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="select-colname">選擇要抽的欄位：</label>
+                            <select id="select-colname" class="form-control">
+                                <option selected disabled>---請選擇---</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="select-colusage">欄位種類</label>
+                            <select id="select-colusage" class="form-control">
+                                <option selected value="name">人名   ex: Tom Radol</option>
+                                <option value="url">個人頁網址  ex: www.facebook.com/tom.radol.1987</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>                       
+                <button type="submit" class="btn btn-primary mt-3" id="submit-grouptab">開始爬取抽獎名單</button>
+            </form>
         </div>
     </div>
     
@@ -185,5 +182,11 @@
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="static/index.js"></script>
 <script src="static/google-sheet.js"></script>
-
+<script>
+    gapi.load('client:auth2', function() {
+        gapi.client.init({{ google_key|safe }}).then(null, function(error) {
+            alert(JSON.stringify(error.error.message));
+        });
+    });
+</script>
 </html>

@@ -1,5 +1,6 @@
 from random import shuffle
-def lottery(prize, people):
+
+def run(prize, people):
     shuffle(people)
     winner = []
     total = 0
