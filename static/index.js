@@ -34,13 +34,13 @@ $('#form-grouptab').submit( function(e) {
         data: JSON.stringify(data),
         success: function(data) {
             $('#submit-grouptab').text("爬取完畢！");
-
+            console.log(data);
             legalList = data;
             ele = "";
             for( var i=0; i<data.length; i++ ) {
                 d = data[i];
                 url = "https://www.facebook.com"+d.url;
-                ele += '<tr><th scope="row">'+(i+1)+'</th><td><a href="'+url+'" target="_blank">'+d.name+'</a></td>><td>'+d.comment+'</td><td>'+"69/19 23:99"+'</td></tr>'
+                ele += '<tr><th scope="row">'+(i+1)+'</th><td><a href="'+url+'" target="_blank">'+d.name+'</a></td>><td>'+d.comment+'</td><td>'+d.time+'</td></tr>'
             }
             $('#legal-list-content').html(ele);
             $('#legal-count').text(data.length);
@@ -48,6 +48,10 @@ $('#form-grouptab').submit( function(e) {
         },
         error: function(a, b, c) {
             console.log(a, b, c)
+            var msg = a.responseText;
+            if( msg=="INVALID_FACEBOOK_URL" ) {
+                alert("url放錯囉87")
+            }
         },
         complete: function() {    
             setTimeout(function() {
