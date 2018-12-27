@@ -1,6 +1,6 @@
 google_key = {
-    'apiKey': 'AIzaSyAD4qydu6OTwsstN7LhbHCnJjcvF2Fjovs',
-    'clientId': '8372100595-q7sv932tbof1ome2td9ktt0q4c02hvjd.apps.googleusercontent.com',
+    'apiKey': 'AIzaSyC6TjjTPNI6PL_x8zWpwIM7xFq6K1wYKOY',
+    'clientId': '1046228036588-8p85lsvh65649p5ut27nfibigcu2f7gg.apps.googleusercontent.com',
     'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
     'scope': "https://www.googleapis.com/auth/spreadsheets.readonly",
 }
