@@ -48,9 +48,9 @@ def scrapy():     # post scrapy setting to backend
     
     if 'csv_options' in req:
         options = req['csv_options']
-        index = 0 if options['type']=="name" else 1
+        index_type = options['type']
         csv_people_list = options['data']
-        lottery_people_list = people_filter.filter_csv(csv_people_list, index, lottery_people_list)
+        lottery_people_list = people_filter.filter_csv(csv_people_list, index_type, lottery_people_list)
 
     final_list = [ {'name': d[0], 'url': d[1], 'comment': d[2], 'time': d[3]} for d in lottery_people_list ]   # cast to json
     print(final_list)

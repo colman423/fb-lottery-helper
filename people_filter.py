@@ -1,3 +1,5 @@
+from helper import *
+
 def filter_like(comment_people_list, like_people_list):
     print("FILTER_LIKE!")
     lottery_people_list = []
@@ -12,10 +14,19 @@ def filter_like(comment_people_list, like_people_list):
                 break
     return lottery_people_list
 
-def filter_csv(csv_data, data_index, fb_data):
+def filter_csv(csv_list, index_type, fb_data):
+
     legal_list = []
+
+    if index_type=="name":
+        data_index = 0
+        csv_data = csv_list
+    elif index_type=="url":
+        data_index = 1
+        csv_data = [ get_clean_url(item) for item in csv_list]
+    print(fb_data)
+    print(csv_data)   
     for d in fb_data:
-        print(d)
         for i in range(len(csv_data)):
             c = csv_data[i]
             if d[data_index]==c:
