@@ -25,8 +25,24 @@ This tools can help you make lottery in groups' post easily.
 	```
     driver_path = "/Somewhere/your/webdriver/store"
     ```
-    
-5. Start
+
+5. Register a Google Sheets API
+
+    [Register a Google Sheets API](https://developers.google.com/sheets/api/quickstart/js)
+
+6. Add api key into config
+
+	config/config.py
+	```
+    google_key = {
+        'apiKey': 'yourapikey',
+        'clientId': 'yourclientid',
+        'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+        'scope': "https://www.googleapis.com/auth/spreadsheets.readonly",
+    }
+    ```
+
+7. Start
     ```
     $ python run.py
     ```
@@ -50,7 +66,3 @@ so this tool might broken in the near future QAQ.
 - Flask - A lightweight web server.
 - Bootstrap - great UI template.
 - JQuery - nice tool for coding js for HTML.
-
-# To do
-- text cast from full to half
-- get clean fb url

@@ -185,6 +185,7 @@
 <script>
     gapi.load('client:auth2', function() {
         gapi.client.init({{ google_key|safe }}).then(null, function(error) {
+            console.log(JSON.stringify(error))
             alert(JSON.stringify(error.error.message));
         });
     });

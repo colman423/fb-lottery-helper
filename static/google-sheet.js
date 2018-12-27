@@ -22,8 +22,8 @@ $('#group-google-get').click(function(e) {
 
 function getSheets() {
 
-    var link = $('#input-googlelink').val() || "https://docs.google.com/spreadsheets/d/1cInDMhG2fRZxVCBWC1UDrYxUsf6hGniKjvx6Yg90Y8U/";
-    var table = $('#input-googletable').val() || "表單回應 1";
+    var link = $('#input-googlelink').val();
+    var table = $('#input-googletable').val();
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: getSheetId(link),
         range: table,
