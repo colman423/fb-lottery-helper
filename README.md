@@ -42,7 +42,7 @@ This tools can help you make lottery in groups' post easily.
     }
     ```
 
-7. Start
+7. Start and open "http://localhost:3000/" with browser
     ```
     $ python run.py
     ```

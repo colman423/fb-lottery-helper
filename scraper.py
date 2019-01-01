@@ -33,8 +33,10 @@ def init_driver():
     return driver
 
 def get_post_page(driver, post_url):
-    # login_by_keyboard(driver)           # 第一次使用，請選擇這個
-    login_by_cookie(driver)         # 之後請選擇這個，自動登入
+    if not config.auto_login:
+        login_by_keyboard(driver)           # 第一次使用，請選擇這個
+    else:
+        login_by_cookie(driver)         # 之後請選擇這個，自動登入
 
     try:
         driver.get(post_url)        # 前往那篇貼文看看
@@ -51,7 +53,7 @@ def get_comment_like_share_wrapper(driver):
     return comment_like_share_wrapper
 
 def get_comment_people_list(driver, comment_like_share_wrapper, comment_rules):     # 爬取留言符合的人
-    print("get_comment_people_list", comment_like_share_wrapper)
+    # print("get_comment_people_list", comment_like_share_wrapper)
     tags_need = comment_rules['TAGS']       # how many tags need in comment
     text_need = comment_rules['TEXT']       # what text need in comment
     comment_wrapper = comment_like_share_wrapper.find_element_by_css_selector('._3w53') # get comment wrapper from prev wrapper
@@ -77,7 +79,7 @@ def get_comment_people_list(driver, comment_like_share_wrapper, comment_rules): 
     for com in comments.items():            # for all comments
         comment_content = com('._3l3x')             # get its content
         if is_legal_comment_content(comment_content, tag=tags_need, text=text_need):    # check if it's legal comment
-            print(comment_content.text(), "LEGAL!")
+            # print(comment_content.text(), "LEGAL!")
             comment_text = comment_content.text()       # get its text
             actor_ele = com('._6qw4')                   # get commentor's element
             actor_url = get_clean_url(actor_ele.attr('href'))   # get commentor's url
@@ -85,11 +87,12 @@ def get_comment_people_list(driver, comment_like_share_wrapper, comment_rules): 
             actor_time = com('.livetimestamp').attr('title')    # get comment time
             comment_people_list.append((actor_name, actor_url, comment_text, actor_time))  # push those things into legal comment people
         else:
-            print(comment_content.text(), "ILLEGAL!")
+            # print(comment_content.text(), "ILLEGAL!")
+            pass
     return comment_people_list      # all is done, return this fucking dope shit skr skr
 
 def get_like_people_list(driver, comment_like_share_wrapper):       # get people who like this post
-    print("get_like_people_list", comment_like_share_wrapper)
+    # print("get_like_people_list", comment_like_share_wrapper)
     like_share_wrapper = comment_like_share_wrapper.find_element_by_css_selector('._3vum')      # get like wrapper from prev wrapper
     like_share_pq = pq(like_share_wrapper.get_attribute('innerHTML'))           # use pq to get a href
     like_link = like_share_pq('._66lg a').attr('href')

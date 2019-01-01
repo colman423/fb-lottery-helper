@@ -5,3 +5,4 @@ google_key = {
     'scope': "",
 }
 driver_path = ""
+auto_login = False

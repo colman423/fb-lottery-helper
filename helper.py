@@ -23,7 +23,7 @@ def get_clean_url(url):
     if o.path == "/profile.php":
         id = o.query.split('&')[0]
         clean += '?'+id
-    print(clean)
+    # print(clean)
     return clean
 
 def full_to_half(s): 
