@@ -20,7 +20,7 @@ def index():    # get html page
 @app.route('/scrapy', methods=['POST'])
 def scrapy():     # post scrapy setting to backend
     req = request.get_json()       # get setting
-    print(req)
+    # print(req)
     if 'comment_options' in req:    # if need comment
         comment_options = {         
             'TAGS': int(req['comment_options']['tag']),
@@ -53,7 +53,7 @@ def scrapy():     # post scrapy setting to backend
         lottery_people_list = people_filter.filter_csv(csv_people_list, index_type, lottery_people_list)
 
     final_list = [ {'name': d[0], 'url': d[1], 'comment': d[2], 'time': d[3]} for d in lottery_people_list ]   # cast to json
-    print(final_list)
+    # print(final_list)
     return Response(json.dumps(final_list),  mimetype='application/json')
 
 @app.route('/lottery', methods=['POST'])

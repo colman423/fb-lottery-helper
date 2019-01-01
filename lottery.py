@@ -6,11 +6,11 @@ def run(prize, people):
     total = 0
     for d in prize:
         start, end = total, total+int(d['count'])
-        print(start, end)
+        # print(start, end)
         for person in people[start: end]:
             tmp = dict(person)
             tmp['prize'] = d['name']
             winner.append(tmp)
         total = end
-    print(winner)
+    # print(winner)
     return winner
