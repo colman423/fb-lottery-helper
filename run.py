@@ -1,10 +1,11 @@
 # encoding=UTF-8
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, redirect
 import scraper
 import lottery
 import people_filter
 import json
 from config import config
+import hw
 
 app = Flask(__name__)
 
@@ -12,6 +13,14 @@ app = Flask(__name__)
 def add_header(response):   # disabled cached when debugging
     response.cache_control.max_age = 1
     return response
+
+
+@app.route('/hw', methods=['POST'])
+def do_hw():
+    food_name = request.form['food_name']
+    link = hw.run(food_name)
+    return redirect(link, code=302)
+    
 
 @app.route('/')
 def index():    # get html page
