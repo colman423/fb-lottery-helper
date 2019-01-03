@@ -52,6 +52,9 @@ $('#form-grouptab').submit( function(e) {
             if( msg=="INVALID_FACEBOOK_URL" ) {
                 alert("url放錯囉87")
             }
+            if( msg.indexOf("needs to be in PATH")!=-1 ) {
+                alert("Chrome Driver位置錯誤")
+            }
         },
         complete: function() {    
             setTimeout(function() {
